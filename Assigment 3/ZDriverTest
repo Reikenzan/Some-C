@@ -1,0 +1,32 @@
+#include "Worker.h"
+#include "SalariedWorker.h"
+#include "HourlyWorker.h"
+#include "Manager.h"
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+/*
+  Worker         X("Jhon Doe", 70113, "sales", 123456789);
+  
+  cout << X.getName() << " made " << X.compute_pay() << endl;
+  cout << endl;
+*/
+    vector<Worker*> workers(4);
+    workers[0] = new Worker ();
+    workers[1] = new HourlyWorker(40, 10);
+    workers[2] = new SalariedWorker(1000);
+    workers[3] = new Manager(100000, 10000);
+    
+    for (int i = 0; i < workers.size(); i++)
+    {
+        cout << workers[i]->compute_pay() << endl;
+    }
+     system("PAUSE");
+    return EXIT_SUCCESS;
+    
+
+}    
