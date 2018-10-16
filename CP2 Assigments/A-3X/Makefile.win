@@ -1,0 +1,40 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.9.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ZDriver.o Hourly_Worker.o Manager.o Salaried_Worker.o Worker.o
+LINKOBJ  = ZDriver.o Hourly_Worker.o Manager.o Salaried_Worker.o Worker.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = T3.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ZDriver.o: ZDriver.cpp
+	$(CPP) -c ZDriver.cpp -o ZDriver.o $(CXXFLAGS)
+
+Hourly_Worker.o: Hourly_Worker.cpp
+	$(CPP) -c Hourly_Worker.cpp -o Hourly_Worker.o $(CXXFLAGS)
+
+Manager.o: Manager.cpp
+	$(CPP) -c Manager.cpp -o Manager.o $(CXXFLAGS)
+
+Salaried_Worker.o: Salaried_Worker.cpp
+	$(CPP) -c Salaried_Worker.cpp -o Salaried_Worker.o $(CXXFLAGS)
+
+Worker.o: Worker.cpp
+	$(CPP) -c Worker.cpp -o Worker.o $(CXXFLAGS)
