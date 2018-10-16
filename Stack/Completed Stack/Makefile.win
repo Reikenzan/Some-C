@@ -1,0 +1,39 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o stack.o Overflow_Exception.o Underflow_Exception.o $(RES)
+LINKOBJ  = main.o stack.o Overflow_Exception.o Underflow_Exception.o $(RES)
+LIBS =  -L"lib"  
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+stack.o: stack.cpp
+	$(CPP) -c stack.cpp -o stack.o $(CXXFLAGS)
+
+Overflow_Exception.o: Overflow_Exception.cpp
+	$(CPP) -c Overflow_Exception.cpp -o Overflow_Exception.o $(CXXFLAGS)
+
+Underflow_Exception.o: Underflow_Exception.cpp
+	$(CPP) -c Underflow_Exception.cpp -o Underflow_Exception.o $(CXXFLAGS)
